@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My أمـيّي</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: black;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: 'Georgia', serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #ffccff;
+      text-shadow: 0 0 15px #ff66cc, 0 0 30px #ff99cc;
+      animation: fadeIn 3s ease-in-out, glow 3s ease-in-out infinite alternate;
+    }
+
+    p {
+      max-width: 600px;
+      font-size: 1.3em;
+      line-height: 1.6;
+      text-shadow: 0 0 10px #aaa, 0 0 20px #77aaff;
+      animation: fadeIn 5s ease-in-out, glow 4s ease-in-out infinite alternate;
+    }
+
+    /* Stars */
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      box-shadow: 0 0 6px white;
+      animation: twinkle 2s infinite alternate, drift 60s linear infinite;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+
+    @keyframes drift {
+      from { transform: translateY(0px) translateX(0px); }
+      to { transform: translateY(-200px) translateX(200px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #77aaff, 0 0 20px #99ccff; }
+      to { text-shadow: 0 0 20px #99ccff, 0 0 40px #cce6ff; }
+    }
+
+    /* Shooting stars */
+    .shooting-star {
+      position: absolute;
+      width: 2px;
+      height: 80px;
+      background: linear-gradient(-45deg, white, transparent);
+      opacity: 0.8;
+      transform: rotate(45deg);
+      animation: shoot 2s linear forwards;
+    }
+
+    @keyframes shoot {
+      from {
+        transform: translateX(-100px) translateY(-100px) rotate(45deg);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(600px) translateY(600px) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Stars -->
+  <script>
+    const numStars = 100;
+    for (let i = 0; i < numStars; i++) {
+      let star = document.createElement("div");
+      star.className = "star";
+      document.body.appendChild(star);
+
+      let size = Math.random() * 3;
+      star.style.width = 1 + size + "px";
+      star.style.height = 1 + size + "px";
+      star.style.top = Math.random() * window.innerHeight + "px";
+      star.style.left = Math.random() * window.innerWidth + "px";
+
+      // random speed & delay
+      star.style.animationDuration = 
+        (Math.random() * 3 + 2) + "s, " + (Math.random() * 40 + 30) + "s";
+      star.style.animationDelay = 
+        (Math.random() * 5) + "s, " + (Math.random() * 20) + "s";
+    }
+
+    // Shooting stars generator
+    function createShootingStar() {
+      let shootingStar = document.createElement("div");
+      shootingStar.className = "shooting-star";
+      shootingStar.style.top = Math.random() * window.innerHeight/2 + "px";
+      shootingStar.style.left = Math.random() * window.innerWidth/2 + "px";
+      document.body.appendChild(shootingStar);
+
+      setTimeout(() => shootingStar.remove(), 2000);
+    }
+
+    // Random shooting stars every 5–10 seconds
+    setInterval(() => {
+      if (Math.random() > 0.5) createShootingStar();
+    }, 5000);
+  </script>
+
+  <!-- Poem -->
+  <h1>For My أمـيّي 💙✨</h1>
+  <p>
+    If I could count the stars above,<br>
+    Or gather the waves of the sea,<br>
+    Still none would match the love<br>
+    that endlessly lives in me.<br><br>
+    As enchanting as skies that shine so wide,<br>
+    As deep as the oceans at rising tide,<br>
+    So is my heart, forever true,<br>
+    Boundless in love, just for you. 🌙💙
+  </p>
+
+  <!-- Hidden Music -->
+  <audio autoplay loop hidden>
+    <source src="ummeey.mp3" type="audio/mpeg">
+  </audio>
+</body>
+</html>
